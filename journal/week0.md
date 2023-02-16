@@ -1,6 +1,6 @@
 # Week 0 — Billing and Architecture
 
-##AWS CLI installation and verification was done by committing through gitpod.
+## AWS CLI installation and verification was done by committing through gitpod.
 
 ### Creating budget- alarm
 I have created a budget for $10. And I have set alarm for 50%, 75% and 100%.
