@@ -17,6 +17,10 @@ My AWS account alias is esen-general-admin
 You can see it in the following image.
 ![Budget](assets/Budget.png)
 
+
+## Created napkin model on a napkin
+[Napkin Model](assets/Napkin_model.pdf)
+
 ## Creating Logical model on LucidChart
 I enjoyed creating the chart. I could not find third party serverless icon on LucidCharts.
 I took a screenshot of Momento icon from google and drag/drop into LucidCharts.
