@@ -2,7 +2,7 @@ from datetime import datetime, timedelta, timezone
 from opentelemetry import trace
 tracer = trace.get_tracer("home.activities")
 class HomeActivities:
-  def run():
+  def run(cognito_user_id=None):
     #logger.info("HomeActivities")
     with tracer.start_as_current_span("home-activities-data"):
       span = trace.get_current_span()
@@ -48,4 +48,15 @@ class HomeActivities:
       }
       ]
       span.set_attribute("app.results_length", len(results))
+      if cognito_user_id != None:
+        extra_crud= {
+        'uuid': '248959df-3079-4947-b847-9e0892d1bab4',
+        'handle':  'Lore',
+        'message': 'My dear brother, it the humans that are the problem',
+        'created_at': (now - timedelta(hours=1)).isoformat(),
+        'expires_at': (now + timedelta(hours=12)).isoformat(),
+        'likes': 2023,
+        'replies': []
+        }
+        results.insert(0,extra_crud)
     return results
