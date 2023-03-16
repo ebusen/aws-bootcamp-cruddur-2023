@@ -1,0 +1,7 @@
+#! /usr/bin/bash
+
+echo "db-drop"
+#we have to exclude the slash and database name from connection url so that we can drop it.
+#otherwise, we will be connected to the database therefore we will not be able to drop the database.
+NO_DB_CONNECTION_URL=$(sed 's/\/cruddur//g' <<<"$CONNECTION_URL")
+psql $NO_DB_CONNECTION_URL -c "DROP DATABASE cruddur;"
