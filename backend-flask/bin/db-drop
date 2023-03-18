@@ -1,6 +1,9 @@
 #! /usr/bin/bash
 
-echo "db-drop"
+CYAN='\033[1;36m'
+NO_COLOR='\033[0m'
+LABEL="db-drop"
+printf "${CYAN}== ${LABEL}${NO_COLOR}\n"
 #we have to exclude the slash and database name from connection url so that we can drop it.
 #otherwise, we will be connected to the database therefore we will not be able to drop the database.
 NO_DB_CONNECTION_URL=$(sed 's/\/cruddur//g' <<<"$CONNECTION_URL")
