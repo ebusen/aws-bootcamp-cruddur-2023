@@ -4,30 +4,42 @@ import os
 
 def lambda_handler(event, context):
     user = event['request']['userAttributes']
-    user_display_name=user['name']
-    user_email=user['email']
-    user_handle=user['preferred_username']
-    user_cognito_id=user['sub']
+    print('userAttributes')
+    print(user)
+
+    user_display_name  = user['name']
+    user_email         = user['email']
+    user_handle        = user['preferred_username']
+    user_cognito_id    = user['sub']
     try:
-        conn = psycopg2.connect(os.getenv('CONNECTION_URL'))
-        cur = conn.cursor()
-        sql=f"""
-        INSERT INTO public.users(
-            display_name,email,handle,cognito_user_id)
-        VALUES(
-            '{user_display_name}','{user_email}','{user_handle}','{user_cognito_id}'
-        )
+        print('entered-try')
+        sql = """
+         INSERT INTO public.users (
+          display_name, 
+          email,
+          handle, 
+          cognito_user_id
+          ) 
+        VALUES(%s,%s,%s,%s)
         """
-        cur.execute(sql)
-        conn.commit() 
+        print('SQL Statement ----')
+        print(sql)
+
+        params = [
+        user_display_name,
+        user_email,
+        user_handle,
+        user_cognito_id
+        ]
+        with psycopg2.connect(os.getenv('CONNECTION_URL')) as conn:
+            with cur = conn.cursor() as cur:
+                cur.execute(sql,params)
+                conn.commit() 
 
     except (Exception, psycopg2.DatabaseError) as error:
         print(error)
-        
+    else:
+        print("Data inserted successfully")
     finally:
-        if conn is not None:
-            cur.close()
-            conn.close()
-            print('Database connection closed.')
-
+        print("Database connection closed.")
     return event
