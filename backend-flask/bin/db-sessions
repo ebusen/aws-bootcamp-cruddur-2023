@@ -20,8 +20,8 @@ fi
 NO_DB_CONNECTION_URL=$(sed 's/\/cruddur//g' <<<"$CON_URL")
 #we are looking for active processes(sessions) before we can drop the database
 psql $NO_DB_CONNECTION_URL -c "select pid as process_id, \
-       usename as user,  \
-       datname as db, \
+       username as user,  \
+       dataname as db, \
        client_addr, \
        application_name as app,\
        state \
