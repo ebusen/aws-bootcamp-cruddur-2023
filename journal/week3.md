@@ -10,5 +10,9 @@ We have also updated CORS for our app. By using Cognito we authenticated the use
 
 **Backend implementation: Cognito JWT Token transfer to backend**
 After authenticating the user, we were storing access token in the local storage. We need to send this token to our backend application.
-In the backend, the next step is to validate this token if it is correct or not. 
+In the backend, the next step is to validate this token if it is correct or not. There was a thrid party library, we used some of the methods they have used but it did not work out as expected. We started writing our own library for cognito jwt token verification. After several debugging and modifications, we were able to log authenticated and unauthenticated logs in the backend container logs. 
+Finally we started working on the style of the website. We made some variables in react. We used these variables to match the background color, text color overall the website pages.
+
+I enjoyed working on multiple different aspects of the project: cognito user pool connection,authentication, style changes on the frontend, and jwt token verification on the backend. 
+
 
