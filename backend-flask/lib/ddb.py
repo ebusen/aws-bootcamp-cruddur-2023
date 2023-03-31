@@ -44,4 +44,4 @@ class Ddb:
             'message': item['message']['S'],
             'created_at': last_sent_at
             })
-            return results
+        return results

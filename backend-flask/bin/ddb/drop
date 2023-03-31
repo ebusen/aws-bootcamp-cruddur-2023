@@ -6,6 +6,7 @@ if [ -z "$1" ]; then
     echo "NO TABLE_NAME argument supplied eg ./bin/ddb/drop cruddur-messages prod"
     exit 1
 fi
+
 TABLE_NAME=$1
 if [ "$2" = "prod" ]; then
     ENDPOINT_URL=""
