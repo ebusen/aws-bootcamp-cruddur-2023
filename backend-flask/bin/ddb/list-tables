@@ -10,5 +10,5 @@ fi
 
 
 aws dynamodb list-tables $ENDPOINT_URL \
-    --query TableNames list\
+    --query TableNames \
     --output table
