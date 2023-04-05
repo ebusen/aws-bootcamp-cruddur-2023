@@ -15,14 +15,17 @@ class Ddb:
             return dynamodb
 
     def list_message_groups(client,my_user_uuid):
+        year= str(datetime.now().year)
         table_name = 'cruddur-messages'
         query_params = {
         'TableName': table_name,
-        'KeyConditionExpression': 'pk = :pk',
+        'KeyConditionExpression': 'pk = :pk and begins_with(sk,:year)',
         'ScanIndexForward': True,
         'Limit': 20,
         'ExpressionAttributeValues': {
-            ':pk': {'S': f"GRP#{my_user_uuid}"}
+            ':year':{'S':year}},
+            ':pk': {'S': f"GRP#{my_user_uuid}"},
+            
         }
         }
         print('query-params', query_params)
