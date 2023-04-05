@@ -13,29 +13,25 @@ if len(sys.argv) == 2:
   if "prod" in sys.argv[1]:
     attrs = {}
 
-ddb = boto3.client('dynamodb',**attrs)
+dynamodb = boto3.client('dynamodb',**attrs)
 table_name = 'cruddur-messages'
 
 message_group_uuid = "5ae290ed-55d1-47a0-bc6d-fe2bc2700399"
-year= str(datetime.now().year)
+
 # define the query parameters
 query_params = {
   'TableName': table_name,
-  'KeyConditionExpression': 'pk = :pk and begins_with(sk,:year)', #:year is out sort key
-  #'KeyConditionExpression' : 'pk = :pk and sk between :start_date and :end_date',
-  'ScanIndexForward': True,
+  'KeyConditionExpression': 'pk = :pk',
+  'ScanIndexForward': False,
   'Limit': 20,
-  'ReturnConsumedCapacity': 'TOTAL',
   'ExpressionAttributeValues': {
-    #':start_date': { "S": "2023-03-01T00:00:00.000000+00.00"},
-    #':end_date': { "S": "2023-03-25T23:59:99.999999+00.00"},
-    ':year':{'S':year}},
     ':pk': {'S': f"MSG#{message_group_uuid}"}
-    
+  },
+  'ReturnConsumedCapacity': 'TOTAL'
 }
 
 # query the table
-response = ddb.query(**query_params)
+response = dynamodb.query(**query_params)
 
 
 
