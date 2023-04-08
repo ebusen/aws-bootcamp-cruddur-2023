@@ -4,7 +4,7 @@ import boto3
 import sys
 import json
 import os
-
+import datetime
 current_path = os.path.dirname(os.path.abspath(__file__))
 parent_path = os.path.abspath(os.path.join(current_path, '..', '..','..'))
 sys.path.append(parent_path)
@@ -21,8 +21,6 @@ if len(sys.argv) == 2:
 ddb = boto3.client('dynamodb',**attrs)
 table_name = 'cruddur-messages'
 
-message_group_uuid = "5ae290ed-55d1-47a0-bc6d-fe2bc2700399"
-
 def get_my_user_uuid():
   sql = """
     SELECT 
@@ -38,12 +36,14 @@ def get_my_user_uuid():
 my_user_uuid=get_my_user_uuid()
 print(f"my-uuid {my_user_uuid}")
 # define the query parameters
+year=str(datetime.now().year)
 query_params = {
   'TableName': table_name,
-  'KeyConditionExpression': 'pk = :pk',
+  'KeyConditionExpression': 'pk = :pk AND begins_with(sk,:year)',
   'ScanIndexForward': False,
   'Limit': 20,
   'ExpressionAttributeValues': {
+    ':year': {'S': year},
     ':pk': {'S': f"MSG#{message_group_uuid}"}
   },
   'ReturnConsumedCapacity': 'TOTAL'
