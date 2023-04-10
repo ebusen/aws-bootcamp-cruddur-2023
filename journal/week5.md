@@ -20,6 +20,9 @@ After uploading data, we were able to get conversations and list conversation be
 
 Implementing conversations also required multiple changes on the frontend pages. We also added new message page, updated their routes.
 I was stuck at this week for almost two weeks. Finally, here is the final screenshots of my accomplishment.
-![updating an existing message group](updating an existing message group.png)
-![creating a new message group](assets/Creating a new message group with Mock user.png)
+
+
+![update](assets/updating an existing message group.png)
+
+![create](assets/Creating a new message group with Mock user.png)
 
