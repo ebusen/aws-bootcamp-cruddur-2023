@@ -10,7 +10,7 @@ When we query with partition key, it will be returning a message group and messa
 The most difficult part of creating single table design was deciding primary keys according to the access patterns we have.
 We outlined the access patterns and layout the table structure before creating the table.
 
-[Access patterns](assets/DynamoDb single table access patterns.png)
+![Access patterns](assets/DynamoDb_single_table_access_patterns.png)
 
 After creating DynamoDB database. We worked only in the local. We set AWS_END_POINT in Docker Compose file to be http://dynamodb-local:8000
 Then by using the RDS local database we gave created in week 4, we loaded schema and seeded our data. 
@@ -22,7 +22,17 @@ Implementing conversations also required multiple changes on the frontend pages.
 I was stuck at this week for almost two weeks. Finally, here is the final screenshots of my accomplishment.
 
 
-![update](assets/updating an existing message group.png)
+![update](assets/updating_an_existing_message_group.png)
 
-![create](assets/Creating a new message group with Mock user.png)
+![create](assets/Creating_a_new_message_group_with_Mock_user.png)
+
+#DynamoDB implementation#
+Ddb Schema is updated with global secondary index. Then the local endpoint is commented out. Since there is no mmore local endpoint, seed script will use AWS DynamoDB as endpoint url. We uploaded schema to production environment.Double checked the creation of our table on AWS DynamoDB. Then we turned on DynamoDB stream. And added a trigger function. Whenever, a message is added into cruddur, it will be invoking a lambda function which will be inserting the message into DynamoDB. We needed LambdaInvoke and DynamoDB permissions. Lambdainvoke permission was managed by AWS and we created DynamoDB query, delete item and put item permission by using policy editor. After attaching correct policies to IAM exceutive lambda role, we tested the system by manually entering data. By using the handle url (.../messages/new/bayko or ...messages/messages/new/londo) we were able to enter data manually. This step was necessary so that we do not create any cost.
+Here is a screenshot of my messages.
+
+![messages](assets/Messages.png)
+
+Here is the CloudWatch Logs for the above messages.
+
+![Cloudwatch logs for messages](assets/Cloudwatch_logs_for_messages.png)
 
