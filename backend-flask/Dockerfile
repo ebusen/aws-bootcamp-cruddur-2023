@@ -1,4 +1,4 @@
-FROM python:3.10-slim-buster
+FROM 981988113011.dkr.ecr.us-east-1.amazonaws.com/backend-flask:latest
 #inside the container
 #make a new folder inside the container
 WORKDIR /backend-flask
@@ -14,7 +14,7 @@ RUN pip3 install -r requirements.txt
 COPY . .
 #set environment variables(inside the container)
 #they will remain set while the app is running
-ENV FLASK_ENV=development
+ENV FLASK_DEBUG=1
 
 EXPOSE ${PORT}
 

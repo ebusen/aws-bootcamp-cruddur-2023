@@ -111,10 +111,16 @@ def init_rollbar():
     got_request_exception.connect(rollbar.contrib.flask.report_exception, app)
 
 #creating a mock error for testing rollbar
-@app.route('/rollbar/test')
-def rollbar_test():
-    rollbar.report_message('Hello World!', 'warning')
-    return "Hello World!"
+#@app.route('/rollbar/test')
+#def rollbar_test():
+#    rollbar.report_message('Hello World!', 'warning')
+#    return "Hello World!"
+
+
+@app.route('/api/health-check')
+def health_check():
+  return {'success': True}, 200
+
 
 @app.route("/api/message_groups", methods=['GET'])
 def data_message_groups():
