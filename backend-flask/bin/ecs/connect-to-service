@@ -8,7 +8,7 @@ fi
 TASK_ID=$1
 
 if [ -z "$2" ]; then 
-  echo "No CONTAINER_NAME argument supplied eg. /bin/ecs/connect-to-service a7f178e228e34518a4a1c83f4c64eeac bakend-flask"
+  echo "No CONTAINER_NAME argument supplied eg. /bin/ecs/connect-to-service a7f178e228e34518a4a1c83f4c64eeac backend-flask"
   exit 1
 fi
 CONTAINER_NAME=$2
