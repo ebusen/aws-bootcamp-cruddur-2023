@@ -1,0 +1,11 @@
+#!  /usr/bin/bash
+
+docker build \
+--build-arg REACT_APP_BACKEND_URL="https://api.sen-cruddur.xyz" \
+--build-arg REACT_APP_AWS_PROJECT_REGION="$AWS_DEFAULT_REGION" \
+--build-arg REACT_APP_AWS_COGNITO_REGION="$AWS_DEFAULT_REGION" \
+--build-arg REACT_APP_AWS_USER_POOLS_ID="us-east-1_TMpvDA2Gp" \
+--build-arg REACT_APP_CLIENT_ID="52b1js821el624g1b35mdlpq8r" \
+-t frontend-react-js \
+-f Dockerfile.prod \
+.
