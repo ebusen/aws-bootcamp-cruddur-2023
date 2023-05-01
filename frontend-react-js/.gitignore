@@ -131,3 +131,7 @@ dist
 
 #frontend build file: statis assests
 frontend-react-js/build/*
+
+docker/**/*
+frontend-react-js/build/*
+*.env
