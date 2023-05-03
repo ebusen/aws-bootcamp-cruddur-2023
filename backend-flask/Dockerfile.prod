@@ -20,4 +20,4 @@ EXPOSE ${PORT}
 
 # command 
 #-m stands for module
-CMD [ "python3", "-m" , "flask", "run", "--host=0.0.0.0", "--port=4567","--nodebug","--nodebugger","--noreload"]
+CMD [ "python3", "-m" , "flask", "run", "--host=0.0.0.0", "--port=4567","--no-debug","--no-debugger","--no-reload"]
