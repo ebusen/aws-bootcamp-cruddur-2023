@@ -143,7 +143,7 @@ Deleted listeners on port 3000 and 4567. Select port 443 listener, manage rules 
 
 We have changed the backend and frontend urls and registered task definitions again. Build, tag and push our containers one more time to ECS.
 Checked the health of target groups of load balancer and checked the health of both services. 
-![Website working](assets/sen-cruddur.xyz)
+![Website working](assets/sen-cruddur.xyz.png)
 
 There are no notifications on my website cause my RDS instance was not working at the time. The code cane be found [here](https://github.com/ebusen/aws-bootcamp-cruddur-2023/commit/239e5d2396590a9bed59f6c8071009ac258dafb5) for backend and frontend working in the new domain.
 
