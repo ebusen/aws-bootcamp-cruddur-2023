@@ -193,6 +193,8 @@ export async function checkAuth(setUser){
 ```
 Then by using find in file, we searched for Authorization and fixed the pages where it was referring to checkAuth. 
 I have both target groups and services working again in healthy condition. Here are some screeshots of my achievement.
+![successful_login](assets/successful_login_new_domain.png)
+![messaging](assets/messaging_in_new_domain.png)
 
 
 
