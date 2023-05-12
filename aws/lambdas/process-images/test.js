@@ -3,9 +3,9 @@ const {getClient, getOriginalImage, processImage, uploadProcessedImage} = requir
 async function main(){
   client = getClient()
   const srcBucket = 'assets.sen-cruddur.xyz'
-  const srcKey = 'avatar/original/data.jpg'
+  const srcKey = 'avatars/original/data.jpeg'
   const dstBucket = 'assets.sen-cruddur.xyz'
-  const dstKey = 'avatar/processed/data.png'
+  const dstKey = 'avatars/processed/data.png'
   const width = 256
   const height = 256
 

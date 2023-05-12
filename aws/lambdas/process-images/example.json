@@ -20,11 +20,11 @@
                 "s3SchemaVersion": "1.0",
                 "configurationId": "EXAMPLEConfig",
                 "bucket": {
-                    "name": "example-bucket",
+                    "name": "assetsBucket",
                     "ownerIdentity": {
                         "principalId": "EXAMPLE"
                     },
-                    "arn": "arn:aws:s3:::example-bucket"
+                    "arn": "arn:aws:s3:::assets.sen-cruddur.xyz"
                 },
                 "object": {
                     "key": "example-object.txt",
