@@ -9,7 +9,7 @@ tasks:
       unzip awscliv2.zip
       sudo ./aws/install
       cd $THEIA_WORKSPACE_ROOT
-      python ./bin/ecr/login
+      ./bin/ecr/login
   - name: postgres
     init: |
     before: |
@@ -29,9 +29,9 @@ tasks:
   - name: "docker-compose up"
     before: |
       gp sync-await "Install Front-End dependencies"
-      docker compose -f "./docker-compose.yml" up -d --build
+      docker compose -f "./Docker-compose.yml" up -d --build
       gp sync-done "docker-compose up"
-  - name: db & ddb setup
+  - name: "db & ddb setup"
     init: |
       gp sync-await "docker-compose up"
       echo "Waiting for 10 seconds..."
