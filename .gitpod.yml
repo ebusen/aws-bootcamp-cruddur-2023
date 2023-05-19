@@ -9,6 +9,7 @@ tasks:
       unzip awscliv2.zip
       sudo ./aws/install
       cd $THEIA_WORKSPACE_ROOT
+      python ./bin/ecr/login
   - name: postgres
     init: |
     before: |
@@ -19,11 +20,26 @@ tasks:
     command: |
       export GITPOD_IP=$(curl ifconfig.me)
       source  "$THEIA_WORKSPACE_ROOT/bin/rds/update-sg-rule"
-  - name: react-js
-    command: |
-      ruby  "$THEIA_WORKSPACE_ROOT/bin/frontend/generate-env"
-      cd frontend-react-js
+  - name: "Install Front-End dependencies"
+    before: |
+      ruby "$THEIA_WORKSPACE_ROOT/bin/frontend/generate-env"
+      cd ./frontend-react-js
       npm i
+      gp sync-done "Install Front-End dependencies"
+  - name: "docker-compose up"
+    before: |
+      gp sync-await "Install Front-End dependencies"
+      docker compose -f "./docker-compose-gitpod.yml" up -d --build
+      gp sync-done "docker-compose up"
+  - name: db & ddb setup
+    init: |
+      gp sync-await "docker-compose up"
+      echo "Waiting for 10 seconds..."
+      sleep 10
+      echo "Done waiting."
+      ./bin/db/setup
+      ./bin/ddb/schema-load
+      ./bin/ddb/seed
   - name: flask
     command: |
       ruby  "$THEIA_WORKSPACE_ROOT/bin/backend/generate-env"
