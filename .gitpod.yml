@@ -29,7 +29,7 @@ tasks:
   - name: "docker-compose up"
     before: |
       gp sync-await "Install Front-End dependencies"
-      docker compose -f "./docker-compose-gitpod.yml" up -d --build
+      docker compose -f "./docker-compose.yml" up -d --build
       gp sync-done "docker-compose up"
   - name: db & ddb setup
     init: |
