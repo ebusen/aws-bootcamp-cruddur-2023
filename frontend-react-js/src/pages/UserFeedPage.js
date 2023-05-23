@@ -8,7 +8,6 @@ import ActivityFeed from 'components/ActivityFeed';
 import ActivityForm from 'components/ActivityForm';
 import ProfileHeading from 'components/ProfileHeading';
 import ProfileForm from 'components/ProfileForm';
-import EditProfileButton from '../components/EditProfileButton'; 
 
 import {checkAuth, getAccessToken} from 'lib/CheckAuth';
 
@@ -64,6 +63,7 @@ export default function UserFeedPage() {
           popped={poppedProfile} 
           setPopped={setPoppedProfile} 
         />
+
         <div className='activity_feed'>
           <ProfileHeading setPopped={setPoppedProfile} profile={profile} />
           <ActivityFeed activities={activities} />
