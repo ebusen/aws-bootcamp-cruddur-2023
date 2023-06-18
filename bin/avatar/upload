@@ -2,8 +2,8 @@
 
 ABS_PATH=$(readlink -f "$0")
 SERVERLESS_PATH=$(dirname $ABS_PATH)
-BANNER_FILE_PATH="$SERVERLESS_PATH/files/banner.jpeg"
-DATA_FILE_PATH="$SERVERLESS_PATH/files/lore.jpeg"
+BANNER_FILE_PATH="$SERVERLESS_PATH/files/banner.jpg"
+DATA_FILE_PATH="$SERVERLESS_PATH/files/data.jpg"
 
-aws s3 cp "$BANNER_FILE_PATH" "s3://sen-cruddur-uploaded-avatars/avatars/banner.jpeg"
-aws s3 cp "$DATA_FILE_PATH" "s3://sen-cruddur-uploaded-avatars/avatars/lore.jpeg"
+aws s3 cp "$BANNER_FILE_PATH" "s3://sen-cruddur-uploaded-avatars/banners/banner.jpg"
+aws s3 cp "$DATA_FILE_PATH" "s3://sen-cruddur-uploaded-avatars/avatars/data.jpg"

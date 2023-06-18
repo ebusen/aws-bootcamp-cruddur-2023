@@ -5,8 +5,8 @@ SERVERLESS_PATH=$(dirname $ABS_PATH)
 BANNER_FILE_PATH="$SERVERLESS_PATH/files/banner.jpg"
 DATA_FILE_PATH="$SERVERLESS_PATH/files/lore.jpg"
 
-aws s3 rm "s3://sen-cruddur-uploaded-avatars/avatars/banner.jpeg"
-aws s3 rm "s3://assets.$DOMAIN_NAME/avatars/banner.jpeg"
+aws s3 rm "s3://sen-cruddur-uploaded-avatars/banners/banner.jpg"
+aws s3 rm "s3://assets.$DOMAIN_NAME/banners/banner.jpg"
 
-aws s3 rm "s3://sen-cruddur-uploaded-avatars/avatars/lore.jpeg"
-aws s3 rm "s3://assets.$DOMAIN_NAME/avatars/lore.jpeg"
+aws s3 rm "s3://sen-cruddur-uploaded-avatars/avatars/lore.jpg"
+aws s3 rm "s3://assets.$DOMAIN_NAME/avatars/lore.jpg"
